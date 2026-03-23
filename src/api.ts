@@ -52,7 +52,6 @@ export async function request<T>(endpoint: string, params: Record<string, string
 }
 
 // API Methods
-
 export async function search<T extends SearchType>(
     type: T,
     query: string,
@@ -66,6 +65,19 @@ export async function search<T extends SearchType>(
             // are we for real
             limit: limit.toString(),
             offset: offset.toString()
+        }
+    );
+
+    return res;
+}
+
+export async function trackInfo(idOrTrack: number | { id: number }): Promise<TrackInfoResponse> {
+    const id = typeof idOrTrack === 'number' ? idOrTrack : idOrTrack.id;
+
+    const res = await request<TrackInfoResponse>(
+        'info', 
+        {
+            id: id.toString()
         }
     );
 
