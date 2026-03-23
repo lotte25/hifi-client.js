@@ -1,0 +1,9 @@
+{
+  "name": "hifi-client.js",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {},
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
