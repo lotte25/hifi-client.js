@@ -1,4 +1,4 @@
-import type { APIResponse, AudioFormat, JSONAPIDocument, JSONAPIResource, TrackPresentation } from "./common";
+import type { AudioFormat, JSONAPIDocument, JSONAPIResource, TrackPresentation } from "./common";
 
 export interface AudioNormalizationData {
   replayGain: number;
@@ -15,4 +15,4 @@ export interface TrackManifestAttributes {
 };
 
 export type TrackManifestResource = JSONAPIResource<TrackManifestAttributes, 'trackManifests'>;
-export type TrackManifestsResponse = APIResponse<JSONAPIDocument<TrackManifestResource>>;
+export type TrackManifestsResponse = JSONAPIDocument<TrackManifestResource>;

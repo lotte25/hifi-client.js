@@ -1,4 +1,5 @@
 import { DEFAULT_API_URL, DEFAULT_HEADERS } from "./constants";
+import type { APIResponse } from "./types";
 
 let apiBaseURL = DEFAULT_API_URL;
 
@@ -46,6 +47,8 @@ export async function request<T>(endpoint: string, params: Record<string, string
         );
     }
 
-    const data = await response.json();
-    return data as T;
+    const data = await response.json() as APIResponse<T>;
+    return data.data;
 }
+
+// API Methods

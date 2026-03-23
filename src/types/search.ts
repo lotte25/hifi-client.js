@@ -1,4 +1,4 @@
-import type { PaginatedData, APIResponse } from "./common";
+import type { PaginatedData } from "./common";
 import type { Track, DetailedArtist, DetailedAlbum, Video, Playlist, Genre } from "./models";
 
 export interface TopHitArtist {
@@ -43,5 +43,5 @@ export interface SearchResults {
   topHits: TopHit[];
 }
 
-export type TrackSearchResponse = APIResponse<PaginatedData<Track>>;
-export type SearchResponse = APIResponse<SearchResults>;
+export type TrackSearchResponse = PaginatedData<Track>;
+export type SearchResponse = SearchResults;

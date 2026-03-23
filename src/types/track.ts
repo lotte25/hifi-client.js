@@ -1,4 +1,4 @@
-import type { APIResponse, AssetPresentation, AudioMode, AudioQuality, ManifestMimeType } from "./common";
+import type { AssetPresentation, AudioMode, AudioQuality, ManifestMimeType } from "./common";
 
 export interface TrackPlaybackInfo {
   trackId: number;
@@ -16,4 +16,4 @@ export interface TrackPlaybackInfo {
   sampleRate: number;
 }
 
-export type TrackPlaybackResponse = APIResponse<TrackPlaybackInfo>;
+export type TrackPlaybackResponse = TrackPlaybackInfo;

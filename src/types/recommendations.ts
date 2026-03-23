@@ -1,4 +1,4 @@
-import type { APIResponse, PaginatedData } from "./common";
+import type { PaginatedData } from "./common";
 import type { Track } from "./models";
 
 export type RecommendationSource = 'SUGGESTED_TRACKS' | string;
@@ -8,4 +8,4 @@ export interface RecommendationItem {
   sources: RecommendationSource[];
 }
 
-export type RecommendationsResponse = APIResponse<PaginatedData<RecommendationItem>>;
+export type RecommendationsResponse = PaginatedData<RecommendationItem>;
