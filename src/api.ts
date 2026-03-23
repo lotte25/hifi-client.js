@@ -1,4 +1,4 @@
-import { DEFAULT_API_URL, DEFAULT_HEADERS } from "../constants";
+import { DEFAULT_API_URL, DEFAULT_HEADERS } from "./constants";
 
 let baseURL = DEFAULT_API_URL;
 
