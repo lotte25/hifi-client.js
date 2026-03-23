@@ -1,4 +1,4 @@
-export const DEFAULT_API_URL = 'https://api.monochrome.tf';
+export const DEFAULT_API_URL = 'https://ohio-1.monochrome.tf';
 export const DEFAULT_HEADERS = {
     'Accept': 'application/json'
 };
