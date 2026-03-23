@@ -1,5 +1,5 @@
 import { DEFAULT_API_URL, DEFAULT_HEADERS } from "./constants";
-import type { APIResponse } from "./types";
+import type { SearchResponseMap, APIResponse, SearchType } from "./types";
 
 let apiBaseURL = DEFAULT_API_URL;
 
@@ -52,3 +52,22 @@ export async function request<T>(endpoint: string, params: Record<string, string
 }
 
 // API Methods
+
+export async function search<T extends SearchType>(
+    type: T,
+    query: string,
+    limit: number = 15,
+    offset: number = 0
+) {
+    const res = await request<SearchResponseMap[T]>(
+        "search", 
+        {
+            [type]: query,
+            // are we for real
+            limit: limit.toString(),
+            offset: offset.toString()
+        }
+    );
+
+    return res;
+}
