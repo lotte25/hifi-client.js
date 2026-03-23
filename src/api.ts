@@ -1,5 +1,5 @@
 import { DEFAULT_API_URL, DEFAULT_HEADERS } from "./constants";
-import type { SearchResponseMap, APIResponse, SearchType, TrackInfoResponse, AudioQuality, TrackPlaybackInfo } from "./types";
+import type { SearchResponseMap, APIResponse, SearchType, TrackInfoResponse, AudioQuality, TrackPlaybackInfo, AudioFormat, ManifestType, ManifestUsage, TrackManifestsResponse, URIScheme } from "./types";
 
 let apiBaseURL = DEFAULT_API_URL;
 
@@ -52,6 +52,15 @@ export async function request<T>(endpoint: string, params: Record<string, string
 }
 
 // API Methods
+
+/**
+ * Searches in the TIDAL catalog
+ * @param type Item type
+ * @param query Search query
+ * @param limit Result limit
+ * @param offset Results to omit
+ * @returns A single tracklist or of all types
+ */
 export async function search<T extends SearchType>(
     type: T,
     query: string,
@@ -71,6 +80,11 @@ export async function search<T extends SearchType>(
     return res;
 }
 
+/**
+ * Fetches metadata fors a track
+ * @param id Track id
+ * @returns Track metadata
+ */
 export async function trackInfo(id: number): Promise<TrackInfoResponse> {
     const res = await request<TrackInfoResponse>(
         'info', 
@@ -82,6 +96,12 @@ export async function trackInfo(id: number): Promise<TrackInfoResponse> {
     return res;
 }
 
+/**
+ * Fetches playback info for a track. `Dolby Atmos` not properly supported by this endpoint, use {@link trackManifests}
+ * @param id Track id
+ * @param quality Desired audio quality ({@link AudioQuality})
+ * @returns Playback info
+ */
 export async function track(
     id: number, 
     quality: AudioQuality = 'HI_RES_LOSSLESS'
