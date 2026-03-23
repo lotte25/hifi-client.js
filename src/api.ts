@@ -1,5 +1,5 @@
 import { DEFAULT_API_URL, DEFAULT_HEADERS } from "./constants";
-import type { SearchResponseMap, APIResponse, SearchType, TrackInfoResponse } from "./types";
+import type { SearchResponseMap, APIResponse, SearchType, TrackInfoResponse, AudioQuality, TrackPlaybackInfo } from "./types";
 
 let apiBaseURL = DEFAULT_API_URL;
 
@@ -78,6 +78,23 @@ export async function trackInfo(idOrTrack: number | { id: number }): Promise<Tra
         'info', 
         {
             id: id.toString()
+        }
+    );
+
+    return res;
+}
+
+export async function track(
+    idOrTrack: number | { id: number }, 
+    quality: AudioQuality = 'HI_RES_LOSSLESS'
+): Promise<TrackPlaybackInfo> {
+    const id = typeof idOrTrack === 'number' ? idOrTrack : idOrTrack.id;
+
+    const res = await request<TrackPlaybackInfo>(
+        'track',
+        {
+            id: id.toString(),
+            quality,
         }
     );
 
