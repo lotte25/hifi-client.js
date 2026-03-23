@@ -71,9 +71,7 @@ export async function search<T extends SearchType>(
     return res;
 }
 
-export async function trackInfo(idOrTrack: number | { id: number }): Promise<TrackInfoResponse> {
-    const id = typeof idOrTrack === 'number' ? idOrTrack : idOrTrack.id;
-
+export async function trackInfo(id: number): Promise<TrackInfoResponse> {
     const res = await request<TrackInfoResponse>(
         'info', 
         {
@@ -85,11 +83,9 @@ export async function trackInfo(idOrTrack: number | { id: number }): Promise<Tra
 }
 
 export async function track(
-    idOrTrack: number | { id: number }, 
+    id: number, 
     quality: AudioQuality = 'HI_RES_LOSSLESS'
 ): Promise<TrackPlaybackInfo> {
-    const id = typeof idOrTrack === 'number' ? idOrTrack : idOrTrack.id;
-
     const res = await request<TrackPlaybackInfo>(
         'track',
         {
