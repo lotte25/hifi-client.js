@@ -27,3 +27,7 @@ export interface SearchResponseMap {
   [SearchType.playlists]: SearchResponse;
   [SearchType.isrc]: TrackSearchResponse; 
 }
+
+export type ManifestType = 'MPEG_DASH' | 'HTTPS' | 'HLS';
+export type URIScheme = 'HTTPS' | 'DATA';
+export type ManifestUsage = 'PLAYBACK' | 'DOWNLOAD';

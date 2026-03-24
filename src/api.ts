@@ -116,3 +116,36 @@ export async function track(
 
     return res;
 }
+
+/**
+ * Fetches manifests for a track
+ * @param id Track id
+ * @param formats Manifest formats
+ * @param adaptive Return multiple formats in one manifest
+ * @param manifestType HLS, MPD or HTTPS (base64?)
+ * @param uriScheme Plain URL (HTTPS) or base64-encoded manifest
+ * @param usage Playback or download
+ * @returns A track manifest
+ */
+export async function trackManifests(
+    id: number, 
+    formats: AudioFormat[], 
+    adaptive: boolean = true, 
+    manifestType: ManifestType = 'MPEG_DASH',
+    uriScheme: URIScheme = 'HTTPS',
+    usage: ManifestUsage = 'PLAYBACK'
+): Promise<TrackManifestsResponse> {
+    const res = await request<TrackManifestsResponse>(
+        'trackManifests',
+        {
+            id: id.toString(),
+            formats,
+            adaptive: String(adaptive),
+            manifestType,
+            uriScheme,
+            usage
+        }
+    );
+
+    return res;
+}
