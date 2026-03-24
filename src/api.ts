@@ -87,7 +87,7 @@ export async function trackManifests(
         'trackManifests',
         {
             id: id.toString(),
-            formats,
+            formats: formats.join(","),
             adaptive: String(adaptive),
             manifestType,
             uriScheme,
