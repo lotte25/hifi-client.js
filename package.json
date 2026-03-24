@@ -1,9 +1,14 @@
 {
   "name": "hifi-client.js",
-  "module": "index.ts",
+  "version": "1.0.0",
   "type": "module",
-  "devDependencies": {},
-  "peerDependencies": {
-    "typescript": "^5"
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc -P tsconfig.json && tsc-esm-fix"
+  },
+  "devDependencies": {
+    "tsc-esm-fix": "^3.1.2",
+    "typescript": "^6.0.2"
   }
 }
